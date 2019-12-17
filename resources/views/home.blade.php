@@ -40,12 +40,14 @@
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; 
     transition: color .5s,fill .5s,box-shadow .5s;
     padding-top: 16px">
+    <a href="/post/{{$post->id}}" style="display: block;">
         <div>
             <h1>{{$post->title}}</h1>
             <div>
             <h4>{{$post->exerpt}}</h3>
             </div>
         </div>
+    </a>
     </div>
 @endforeach
 
