@@ -9,7 +9,7 @@ $factory->define(BlogPost::class, function (Faker $faker) {
     return [
         'title' => $faker->sentence(3),
         'body' => $faker->paragraph(80, true),
-        'exerpt' => $faker->paragraph(1),
+        'exerpt' => $faker->paragraph(8),
         'user_id' => App\User::InRandomOrder()->first()->id
     ];
 });
