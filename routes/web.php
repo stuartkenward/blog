@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'BlogPostsController@index')->name('home');
 
 Auth::routes();
+
+Route::get('/post/{post}', 'BlogPostDetailController@index')->name('post.show');
