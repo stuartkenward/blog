@@ -1,0 +1,15 @@
+<?php
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+
+use App\BlogPost;
+use Faker\Generator as Faker;
+
+$factory->define(BlogPost::class, function (Faker $faker) {
+    return [
+        'title' => $faker->sentence(3),
+        'body' => $faker->paragraph(1),
+        'exerpt' => $faker->paragraph(1),
+        'user_id' => App\User::InRandomOrder()->first()->id
+    ];
+});
