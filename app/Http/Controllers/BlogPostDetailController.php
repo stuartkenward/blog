@@ -1,11 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\BlogPost;
 use App\User;
-use App\Comment;
+use App\Comments;
 
 class BlogPostDetailController extends Controller
 {
@@ -13,10 +12,12 @@ class BlogPostDetailController extends Controller
         
         $post = BlogPost::find($post);
         $user = User::find($post->user_id);
+        $comments = Comments::where('blog_post_id', '=', $post->id)->get();
 
         return view("blogPostDetail", [
             'post' => $post,
-            'user' => $user
+            'user' => $user,
+            'comments' => $comments
         ]);
     }
 }

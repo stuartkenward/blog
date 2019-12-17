@@ -3,7 +3,6 @@
 @section('content')
 
 <div style="padding-top: 16px"></div>
-
 <div class="container">
     <div class="col-12" style="
         background: #FFFFFF; 
@@ -22,6 +21,17 @@
                 <div>{{$user->name}}</div>
             </div>
         </div>
+    </div>
+
+    <div>
+        Comments
+        @foreach ($comments as $comment)
+            <div class="container">
+                <div>
+                    {{$comment->body}}
+                </div>
+            </div>
+        @endforeach
     </div>
 </div>
 
