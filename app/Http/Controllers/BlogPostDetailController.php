@@ -10,8 +10,8 @@ class BlogPostDetailController extends Controller
 {
     public function index($post){
         
-        $post = BlogPost::find($post);
-        $user = User::find($post->user_id);
+        $post = BlogPost::findOrFail($post);
+        $user = User::findOrFail($post->user_id);
         $comments = Comments::where('blog_post_id', '=', $post->id)->get();
 
         return view("blogPostDetail", [
