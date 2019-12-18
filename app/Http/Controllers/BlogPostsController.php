@@ -38,8 +38,16 @@ class BlogPostsController extends Controller
             'exerpt' => 'required'
         ]);
 
-        auth()->user()->blogPosts()->create($data);
+        $imagePath = request('image')->store('uploads', 'public');
 
-        dd(request()->all());
+        auth()->user()->blogPosts()->create([
+            'title' => $data['title'],
+            'body' => $data['body'],
+            'exerpt' => $data['exerpt'],
+            'numberOfComments' => "0",
+            'image' => $imagePath
+        ]);
+
+        return redirect('/');
     }
 }
