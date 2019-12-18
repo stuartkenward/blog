@@ -18,6 +18,7 @@ class CreateBlogPostsTable extends Migration
             $table->string('title');
             $table->string('body');
             $table->string('exerpt');
+            $table->string('image');
             $table->int('numberOfComments');
             $table->timestamps();
             $table->unsignedBigInteger('user_id');

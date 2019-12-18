@@ -20,4 +20,8 @@ class BlogPostsController extends Controller
             'posts' => $posts
         ]);
     }
+
+    public function create(){
+        return view('posts.create');
+    }
 }

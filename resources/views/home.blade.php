@@ -9,7 +9,7 @@
         background: #FFFFFF; 
         padding-top: 16px">
 
-        <div class="">
+        <div class="d-flex justify-content-between">
             <div class="search-container">
                 <form action="/action_page.php">
                     <input type="text" placeholder="Search.." name="search">
@@ -26,9 +26,12 @@
                 <option value="Category1">Category 1</option>
                 <option value="Category2">Category 2</option>
                 <option value="Category3">Category 3</option>
-            </select>     
+            </select>
+            <a href="/p/create">Add new post</a>     
         </div>
+        
     </div>
+    
 
 <div class="py-2">
 @foreach ($posts as $post)
