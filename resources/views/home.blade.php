@@ -47,6 +47,7 @@
             <div>
             <h4>{{$post->exerpt}}</h3>
             </div>
+        <h5 style="text-align: right">{{$post->numberOfComments}} comments</h5>
         </div>
     </a>
     </div>
