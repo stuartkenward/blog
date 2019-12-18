@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\BlogPosts;
 use App\Comments;
+use App\BlogPost;
+use App\User;
 
 class BlogPostsController extends Controller
 {
@@ -23,5 +25,19 @@ class BlogPostsController extends Controller
 
     public function create(){
         return view('posts.create');
+    }
+
+    public function store(){
+        
+        $data =request()->validate([
+            'title' => 'required',
+            'body' => 'required',
+            'image' => '',
+            'exerpt' => 'required'
+        ]);
+
+        auth()->user()->blogPosts()->create($data);
+
+        dd(request()->all());
     }
 }

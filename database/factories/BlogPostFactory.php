@@ -10,6 +10,8 @@ $factory->define(BlogPost::class, function (Faker $faker) {
         'title' => $faker->sentence(3),
         'body' => $faker->paragraph(80, true),
         'exerpt' => $faker->paragraph(8),
+        'numberOfComments' => 0,
+        'image' => $faker->sentence(1),
         'user_id' => App\User::InRandomOrder()->first()->id
     ];
 });

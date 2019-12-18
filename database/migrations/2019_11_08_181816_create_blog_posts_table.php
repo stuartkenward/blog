@@ -18,8 +18,8 @@ class CreateBlogPostsTable extends Migration
             $table->string('title');
             $table->string('body');
             $table->string('exerpt');
-            $table->string('image');
-            $table->int('numberOfComments');
+            $table->string('image')->nullable();
+            $table->integer('numberOfComments')->nullable();
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
@@ -28,7 +28,7 @@ class CreateBlogPostsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
+     *s
      * @return void
      */
     public function down()
