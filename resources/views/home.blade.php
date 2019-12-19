@@ -27,6 +27,13 @@
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; 
     transition: color .5s,fill .5s,box-shadow .5s;
     padding-top: 16px">
+        <div>
+            test
+            {{-- @foreach ($post->categories as $category)
+                <div>{{$category->name}}</div>
+            @endforeach --}}
+
+        </div>
         <a href="/post/{{$post->id}}" style="display: block; color: #000000; text-decoration: none">
             <div>
                 <div class="d-flex justify-content-between">
