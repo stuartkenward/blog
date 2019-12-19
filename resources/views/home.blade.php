@@ -47,6 +47,7 @@
     <a href="/post/{{$post->id}}" style="display: block; color: #000000; text-decoration: none">
         <div>
             <h1>{{$post->title}}</h1>
+            <div style="text-align: right">Posted by {{$post->posted_by}}</div>
             <div>
             <h4>{{$post->exerpt}}</h3>
             </div>

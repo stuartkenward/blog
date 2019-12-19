@@ -45,6 +45,7 @@ class BlogPostsController extends Controller
             'body' => $data['body'],
             'exerpt' => $data['exerpt'],
             'numberOfComments' => "0",
+            'posted_by' => auth()->user()->name,
             'image' => $imagePath
         ]);
 
