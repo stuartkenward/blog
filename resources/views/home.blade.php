@@ -4,15 +4,14 @@
 
 <div >
     <div class="container py-2">
-        <div class="d-flex justify-content-between">
-            <h1>Blog Entries</h1>
+        <div style="text-align: center;">
+            <h1>The Super Blog</h1>
             @if ($loggedIn)
                 <a href="/p/create" class="btn btn-primary">Add new post</a> 
             @endif
-                
-        </div>
         </div>
     </div>
+</div>
     
 
 <div class="py-2">
