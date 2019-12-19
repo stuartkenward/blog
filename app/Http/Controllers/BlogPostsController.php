@@ -69,4 +69,10 @@ class BlogPostsController extends Controller
 
         return redirect('/')->with('success','Post Edited');
     }
+
+    public function delete($id){
+        $post = BlogPost::find($id);
+        $post->delete();
+        return redirect('/')->with('success','Post Deleted');
+    }
 }

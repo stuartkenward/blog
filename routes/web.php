@@ -20,4 +20,6 @@ Route::get('/p/create', 'BlogPostsController@create');
 Route::post('/p', 'BlogPostsController@store');
 Route::get('/p/edit/{post}', 'BlogPostsController@edit');
 Route::post('/p/edit/{post}', 'BlogPostsController@update');
+Route::post('/p/delete/{post}', 'BlogPostsController@delete');
 Route::post('/c/{post}', 'BlogPostDetailController@store');
+

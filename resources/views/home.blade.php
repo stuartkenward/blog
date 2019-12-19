@@ -3,38 +3,18 @@
 @section('content')
 
 <div >
-    <div class="container" style="
-        border-radius: 4px;
-        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-        background: #FFFFFF; 
-        padding-top: 16px">
-
+    <div class="container py-2">
         <div class="d-flex justify-content-between">
-            <div class="search-container">
-                <form action="/action_page.php">
-                    <input type="text" placeholder="Search.." name="search">
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
-            </div>
-
-            <select name="sortBy">
-                <option value="DateNew">Date new to old</option>
-                <option value="DateOld">Date old to new</option>
-                <option value="Popularity">Popularity</option>
-            </select>
-            <select name="sortByCategory">
-                <option value="Category1">Category 1</option>
-                <option value="Category2">Category 2</option>
-                <option value="Category3">Category 3</option>
-            </select>
-            <a href="/p/create">Add new post</a>     
+            <h1>Blog Entries</h1>
+            <a href="/p/create" class="btn btn-primary">Add new post</a>     
         </div>
-        
+        </div>
     </div>
     
 
 <div class="py-2">
 @foreach ($posts as $post)
+<div class="py-2">
     <div class="container" style="
     background: #FFFFFF; 
     canvas: #DAE0E6; 
@@ -59,16 +39,20 @@
         </a>
         <div class="d-flex justify-content-between">
             <h5 style="text-align: left">{{$post->number_of_comments}} comments</h5>
-            <div>
-                <a href="/p/edit/{{$post->id}}" class="btn btn-default">
-                        Edit post
-                </a>
-                <a href="/p/delete/{{$post->id}}" class="btn btn-default">
-                        Delete post
-                </a>
+            <div class="d-flex">
+                <form action="/p/edit/{{$post->id}}" enctype="multipart/form-data" method="get">
+                    @csrf
+                            <button class="btn btn-secondary">Edit post</button>
+                </form>
+                <form action="/p/delete/{{$post->id}}" enctype="multipart/form-data" method="post">
+                    @csrf
+                            <button class="btn btn-danger">Delete post</button>
+
+                </form>
             </div>
         </div>
     </div>
+</div>
 @endforeach
 <div class="container">
     <div style="display: flex;
