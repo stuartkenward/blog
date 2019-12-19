@@ -6,7 +6,10 @@
     <div class="container py-2">
         <div class="d-flex justify-content-between">
             <h1>Blog Entries</h1>
-            <a href="/p/create" class="btn btn-primary">Add new post</a>     
+            @if ($loggedIn)
+                <a href="/p/create" class="btn btn-primary">Add new post</a> 
+            @endif
+                
         </div>
         </div>
     </div>

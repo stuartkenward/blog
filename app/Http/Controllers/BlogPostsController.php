@@ -9,15 +9,11 @@ use App\Comments;
 
 class BlogPostsController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index(){
 
         $posts = BlogPosts::orderBy('created_at','desc')->paginate(5);
         $user = auth()->user();
+        $loggedIn = auth()->check();
 
         foreach($posts as $post){
             $post->number_of_comments = Comments::where('blog_post_id', '=', $post->id)->get()->count();
@@ -25,33 +21,42 @@ class BlogPostsController extends Controller
 
         return view("home", [
             'posts' => $posts,
-            'user' => $user
+            'user' => $user,
+            'loggedIn' => $loggedIn
+
         ]);
     }
 
     public function create(){
-        return view('posts.create');
+
+        if (auth()->check()){
+            return view('posts.create');
+        }
+    
+        return redirect('/');
     }
 
     public function store(){
         
-        $data =request()->validate([
-            'title' => 'required',
-            'body' => 'required',
-            'image' => '',
-            'exerpt' => 'required'
-        ]);
+        if (auth()->check()){
+            $data =request()->validate([
+                'title' => 'required',
+                'body' => 'required',
+                'image' => '',
+                'exerpt' => 'required'
+            ]);
 
-        $imagePath = request('image')->store('uploads', 'public');
+            $imagePath = request('image')->store('uploads', 'public');
 
-        auth()->user()->blogPosts()->create([
-            'title' => $data['title'],
-            'body' => $data['body'],
-            'exerpt' => $data['exerpt'],
-            'number_of_comments' => "0",
-            'posted_by' => auth()->user()->name,
-            'image' => $imagePath
-        ]);
+            auth()->user()->blogPosts()->create([
+                'title' => $data['title'],
+                'body' => $data['body'],
+                'exerpt' => $data['exerpt'],
+                'number_of_comments' => "0",
+                'posted_by' => auth()->user()->name,
+                'image' => $imagePath
+            ]);
+        }
 
         return redirect('/');
     }
