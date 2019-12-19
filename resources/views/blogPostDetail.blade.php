@@ -24,7 +24,29 @@
     </div>
 
     <div class="pt-2">
-        <form action="/c" enctype="multipart/form-data" method="post">
+        <h2>Comments</h2>
+        @foreach ($comments as $comment)
+        <div class="pt-2">
+            <div class="container" style="
+            background: #FFFFFF; 
+            canvas: #DAE0E6; 
+            display: block; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; 
+            transition: color .5s,fill .5s,box-shadow .5s;">
+                <div>
+                    {{$comment->body}}
+                </div>
+                <div>
+                    Posted by {{$user->name}} at {{$comment->updated_at}}
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+    <div class="pt-2">
+        <form action="/c/{{$post->id}}" enctype="multipart/form-data" method="post">
             @csrf
             <div class="row">
                 <div class="col-8 offset-2">
@@ -45,21 +67,6 @@
                 </div>
             </div>
         </form>
-
-        @foreach ($comments as $comment)
-            <div class="container" style="
-            background: #FFFFFF; 
-            canvas: #DAE0E6; 
-            display: block; 
-            border-radius: 4px; 
-            cursor: pointer; 
-            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; 
-            transition: color .5s,fill .5s,box-shadow .5s;">
-                <div>
-                    {{$comment->body}}
-                </div>
-            </div>
-        @endforeach
     </div>
 </div>
 

@@ -21,7 +21,7 @@ class BlogPostDetailController extends Controller
             'comments' => $comments
         ]);
     }
-    public function store(){
+    public function store($post){
         
         $data =request()->validate([
             'body' => 'required'
@@ -30,7 +30,7 @@ class BlogPostDetailController extends Controller
 
         auth()->user()->comments()->create([
             'body' => $data['body'],
-            'blog_post_id' => '1'
+            'blog_post_id' => $post
         ]);
 
         return Redirect::back();
