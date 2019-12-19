@@ -9,9 +9,9 @@ $factory->define(BlogPost::class, function (Faker $faker) {
     $user = App\User::InRandomOrder()->first();
 
     return [
-        'title' => $faker->sentence(3),
-        'body' => $faker->paragraph(80, true),
-        'exerpt' => $faker->paragraph(8),
+        'title' => $faker->realText(24),
+        'body' => $faker->realText(4000),
+        'exerpt' => $faker->realText(250),
         'number_of_comments' => 0,
         'posted_by' => $user->name,
         'image' => $faker->sentence(1),
