@@ -37,7 +37,15 @@
         <a href="/post/{{$post->id}}" style="display: block; color: #000000; text-decoration: none">
             <div>
                 <div class="d-flex justify-content-between">
-                    <h1>{{$post->title}}</h1>
+                    <h1 style="font-family: futura-pt;
+                    font-weight: 400;
+                    font-style: normal;
+                    font-size: 30px;
+                    letter-spacing: 0em;
+                    line-height: 1.5em;
+                    text-transform: none;
+                    color: #3b4b7f;
+                    -webkit-box-ordinal-group: 2;">{{$post->title}}</h1>
                     <div>
                         <div style="text-align:right">
                             @foreach ($categories as $category)
@@ -53,7 +61,14 @@
                     <img src="/storage/{{$post->image}}" alt="" style="width:auto;max-height: 540px;">
                 </div>
                 <div>
-                <h4>{{$post->exerpt}}</h3>
+                <h4 style="font-family: proxima-nova;
+                font-weight: 400;
+                font-style: normal;
+                font-size: 15px;
+                letter-spacing: .02em;
+                line-height: 2em;
+                text-transform: none;
+                color: #757575;">{{$post->exerpt}}</h3>
                 </div>
             </div>
         </a>

@@ -11,16 +11,30 @@
         border-radius: 4px; 
         box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; 
         transition: color .5s,fill .5s,box-shadow .5s;">
-        <div>
-            <h1>{{$post->title}}</h1> 
+        <div style="text-align: center;">
+            <h1 style="font-family: futura-pt;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 30px;
+            letter-spacing: 0em;
+            line-height: 1.5em;
+            text-transform: none;
+            color: #3b4b7f;
+            -webkit-box-ordinal-group: 2;">{{$post->title}}</h1> 
+            <div>Posted by {{$user->name}}</div>
             @foreach ($categories as $category)
                 <div>{{$category->name}}</div>
             @endforeach
-            <div class="d-flex justify-content-between">
-                <img src="/storage/{{$post->image}}" alt="" style="width:auto;max-height: 540px;">
-            </div>
-            <h4>{{$post->body}}</h3>
-            <div style="text-align:right">Posted by {{$user->name}}</div>
+            <img src="/storage/{{$post->image}}" alt="" style="width:auto; max-height: 540px; align: center;">
+            <div style="font-family: proxima-nova;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 15px;
+            letter-spacing: .02em;
+            line-height: 2em;
+            text-transform: none;
+            color: #757575;">{{$post->body}}</div>
+            
         </div>
         <div class="d-flex">
             @can('update', \App\BlogPost::find($post->id))

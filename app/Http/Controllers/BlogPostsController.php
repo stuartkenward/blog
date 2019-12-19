@@ -17,13 +17,13 @@ class BlogPostsController extends Controller
 
         foreach($posts as $post){
             $post->number_of_comments = Comments::where('blog_post_id', '=', $post->id)->get()->count();
+            $post->save();
         }
 
         return view("home", [
             'posts' => $posts,
             'user' => $user,
             'loggedIn' => $loggedIn
-
         ]);
     }
 
