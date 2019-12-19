@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\BlogPost;
 use App\User;
 use App\Comments;
+use App\Comment;
 use Illuminate\Support\Facades\Redirect;
 
 class BlogPostDetailController extends Controller
@@ -35,5 +36,25 @@ class BlogPostDetailController extends Controller
         ]);
 
         return Redirect::back();
+    }
+
+    public function edit($id){
+        $comment = Comment::find($id);
+        return view('comments.edit')->with('comment', $comment);
+    }
+
+    public function update($id){
+
+        $comment = Comment::find($id);
+        $comment->body = request()->input('body');
+        $comment->save();
+        return redirect('/post/'.$comment->blog_post_id);
+
+    }
+
+    public function delete($id){
+        $comment = Comment::find($id);
+        $comment->delete();
+        return Redirect::back()->with('success','Post Deleted');
     }
 }

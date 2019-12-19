@@ -16,6 +16,17 @@
             <h4>{{$post->body}}</h3>
             <div style="text-align:right">Posted by {{$user->name}}</div>
         </div>
+        <div class="d-flex">
+            <form action="/p/edit/{{$post->id}}" enctype="multipart/form-data" method="get">
+                @csrf
+                        <button class="btn btn-secondary">Edit post</button>
+            </form>
+            <form action="/p/delete/{{$post->id}}" enctype="multipart/form-data" method="post">
+                @csrf
+                        <button class="btn btn-danger">Delete post</button>
+
+            </form>
+        </div>
     </div>
 
     <div class="pt-2">
@@ -34,6 +45,17 @@
                 </div>
                 <div style="text-align:right">
                     Posted by {{$comment->posted_by}}
+                </div>
+                <div class="d-flex">
+                    <form action="/c/edit/{{$comment->id}}" enctype="multipart/form-data" method="get">
+                        @csrf
+                                <button class="btn btn-secondary">Edit comment</button>
+                    </form>
+                    <form action="/c/delete/{{$comment->id}}" enctype="multipart/form-data" method="post">
+                        @csrf
+                                <button class="btn btn-danger">Delete comment</button>
+    
+                    </form>
                 </div>
             </div>
         </div>

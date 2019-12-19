@@ -21,5 +21,9 @@ Route::post('/p', 'BlogPostsController@store');
 Route::get('/p/edit/{post}', 'BlogPostsController@edit');
 Route::post('/p/edit/{post}', 'BlogPostsController@update');
 Route::post('/p/delete/{post}', 'BlogPostsController@delete');
-Route::post('/c/{post}', 'BlogPostDetailController@store');
+
+Route::post('/c/{comment}', 'BlogPostDetailController@store');
+Route::get('/c/edit/{comment}', 'BlogPostDetailController@edit');
+Route::post('/c/edit/{comment}', 'BlogPostDetailController@update');
+Route::post('/c/delete/{comment}', 'BlogPostDetailController@delete');
 
