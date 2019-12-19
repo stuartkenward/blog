@@ -10,7 +10,8 @@
         canvas: #DAE0E6; 
         display: block; 
         border-radius: 4px; 
-        transition: color .5s,fill .5s,box-shadow .5s;">
+        transition: color .5s,fill .5s,box-shadow .5s;
+        overflow: auto;">
         <div >
             <h1 style="font-family: futura-pt;
             font-weight: 400;
@@ -38,28 +39,32 @@
             text-transform: none;
             color: #757575;">{{$post->body}}</div>
             
-            <div class="d-flex pt-2" style="align-items: flex-end; float: right;">
-                @can('update', \App\BlogPost::find($post->id))
-                <form action="/p/edit/{{$post->id}}" enctype="multipart/form-data" method="get">
-                    @csrf
-                            <button class="btn btn-secondary" >Edit post</button>
-                </form>
-                @endcan
-                @can('delete', \App\BlogPost::find($post->id))
-                <form action="/p/delete/{{$post->id}}" enctype="multipart/form-data" method="post">
-                    @csrf
-                            <button class="btn btn-danger">Delete post</button>
+            
+        </div>
+        <div>
+            <div style="text-align: center;">
+        <div class="d-flex pt-2" style="align-items: flex-end; float:right">
+            @can('update', \App\BlogPost::find($post->id))
+            <form action="/p/edit/{{$post->id}}" enctype="multipart/form-data" method="get">
+                @csrf
+                        <button class="btn btn-secondary" style="margin:5px">Edit post</button>
+            </form>
+            @endcan
+            @can('delete', \App\BlogPost::find($post->id))
+            <form action="/p/delete/{{$post->id}}" enctype="multipart/form-data" method="post">
+                @csrf
+                        <button class="btn btn-danger" style="margin:5px">Delete post</button>
     
-                </form>
-                @endcan
+            </form>
+            @endcan
             </div>
         </div>
-        
+        </div>
     </div>
 
     <div class="container pt-2" style="box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; 
-    background-color:#757575; border-radius: 4px;">
-        <h2>Comments</h2>
+    background-color:#757575; border-radius: 4px; margin:5px">
+        <h2 style="text-align:center;">Comments</h2>
         @foreach ($comments as $comment)
         <div class="pt-2">
             <div class="container" style="
@@ -82,7 +87,8 @@
                     <div style="font-family: proxima-nova;
                     font-weight: 400;
                     font-style: normal;
-                    font-size: 13px;">
+                    font-size: 13px;
+                    align-text:bottom;">
                         Posted by {{$comment->posted_by}}
                     </div>
                     <div style="float: right;">
@@ -90,13 +96,13 @@
                         @can('update', \App\Comment::find($comment->id))
                         <form action="/c/edit/{{$comment->id}}" enctype="multipart/form-data" method="get">
                             @csrf
-                                    <button class="btn btn-secondary">Edit comment</button>
+                                    <button class="btn btn-secondary" style="margin:5px">Edit comment</button>
                         </form>
                         @endcan
                         @can('delete', \App\Comment::find($comment->id))
                         <form action="/c/delete/{{$comment->id}}" enctype="multipart/form-data" method="post">
                             @csrf
-                                    <button class="btn btn-danger">Delete comment</button>
+                                    <button class="btn btn-danger" style="margin:5px">Delete comment</button>
         
                         </form>
                         </div>
@@ -106,31 +112,31 @@
             </div>
         </div>
         @endforeach
-    </div>
-    <div class="pt-2">
-        @if ($loggedIn)     
-        <form action="/c/{{$post->id}}" enctype="multipart/form-data" method="post">
-            @csrf
-            <div class="row">
-                <div class="col-8 offset-2">
-                    <div class="form-group row">
-                            <textarea id="body" class="form-control" name="body" rows="5" cols="40" required autocomplete="body" autofocus></textarea>
-                            @error('body')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+        <div class="pt-2">
+            @if ($loggedIn)     
+            <form action="/c/{{$post->id}}" enctype="multipart/form-data" method="post">
+                @csrf
+                <div class="row">
+                    <div class="col-8 offset-2">
+                        <div class="form-group row">
+                                <textarea id="body" class="form-control" name="body" rows="5" cols="40" required autocomplete="body" autofocus></textarea>
+                                @error('body')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="row pt-2">
-                <div class="col-8 offset-2">
-                    <button class="btn btn-primary">Add New Comment</button>
+                
+                <div class="row">
+                    <div class="col-8 offset-2" style="margin-bottom:10px">
+                        <button class="btn btn-primary" style="float: right;">Add New Comment</button>
+                    </div>
                 </div>
-            </div>
-        </form>
-        @endif
+            </form>
+            @endif
+        </div>
     </div>
 </div>
 

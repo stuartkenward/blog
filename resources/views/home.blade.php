@@ -5,7 +5,10 @@
 <div >
     <div class="container py-2">
         <div style="text-align: center;">
-            <h1>The Super Blog</h1>
+            <h1 style="font-family: futura-pt;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 50px;">The Super Blog</h1>
             @if ($loggedIn)
                 <a href="/p/create" class="btn btn-primary">Add new post</a> 
             @endif
@@ -25,7 +28,8 @@
     cursor: pointer; 
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; 
     transition: color .5s,fill .5s,box-shadow .5s;
-    padding-top: 16px">
+    padding-top: 16px;
+    overflow: auto;">
         
         <?php
             $post = \App\BlogPost::find($post->id);
@@ -62,19 +66,20 @@
                 </div>
             </div>
         </a>
-        <h5 style="text-align: right">{{$post->number_of_comments}} comments</h5>
+        
         <div class="d-flex justify-content-between">
-            <div class="d-flex">
+            <h5 style="text-align: bottom">{{$post->number_of_comments}} comments</h5>
+            <div class="d-flex" style="align-items: flex-end; float:right">
                 @can('update', \App\BlogPost::find($post->id))
                     <form action="/p/edit/{{$post->id}}" enctype="multipart/form-data" method="get">
                         @csrf
-                                <button class="btn btn-secondary">Edit post</button>
+                                <button class="btn btn-secondary" style="margin:5px">Edit post</button>
                     </form>
                 @endcan
                 @can('delete', \App\BlogPost::find($post->id))
                     <form action="/p/delete/{{$post->id}}" enctype="multipart/form-data" method="post">
                         @csrf
-                                <button class="btn btn-danger">Delete post</button>
+                                <button class="btn btn-danger" style="margin:5px">Delete post</button>
 
                     </form>
                 @endcan
