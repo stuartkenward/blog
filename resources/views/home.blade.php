@@ -43,7 +43,7 @@
             <div>
                 <div class="d-flex justify-content-between">
                 <h1>{{$post->title}}</h1>
-                <img src="{{$post->image}}" alt="{{$post->image}}">
+                <img src="/storage/{{$post->image}}" alt="">
                 <div style="text-align: right">Posted by {{$post->posted_by}}</div>
                 
                 </div>
