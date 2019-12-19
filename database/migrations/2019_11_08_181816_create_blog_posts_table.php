@@ -19,7 +19,7 @@ class CreateBlogPostsTable extends Migration
             $table->string('body');
             $table->string('exerpt');
             $table->string('image')->nullable();
-            $table->integer('numberOfComments')->nullable();
+            $table->integer('number_of_comments')->nullable();
             $table->string('posted_by');
             $table->timestamps();
             $table->unsignedBigInteger('user_id');

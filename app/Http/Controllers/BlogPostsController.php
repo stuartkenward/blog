@@ -17,7 +17,7 @@ class BlogPostsController extends Controller
         $posts = BlogPosts::orderBy('created_at','desc')->paginate(5);
 
         foreach($posts as $post){
-            $post->numberOfComments = Comments::where('blog_post_id', '=', $post->id)->get()->count();
+            $post->number_of_comments = Comments::where('blog_post_id', '=', $post->id)->get()->count();
         }
 
         return view("home", [
@@ -44,7 +44,7 @@ class BlogPostsController extends Controller
             'title' => $data['title'],
             'body' => $data['body'],
             'exerpt' => $data['exerpt'],
-            'numberOfComments' => "0",
+            'number_of_comments' => "0",
             'posted_by' => auth()->user()->name,
             'image' => $imagePath
         ]);
