@@ -55,8 +55,14 @@
     </a>
     </div>
 @endforeach
+<div class="container">
+    <div style="display: flex;
+    align-items: center;
+    justify-content: center;">
+        {{ $posts->links() }}
+    </div>
+</div>
 
-{{ $posts->links() }}
 </div>
     
 </div>

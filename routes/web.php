@@ -18,3 +18,4 @@ Auth::routes();
 Route::get('/post/{post}', 'BlogPostDetailController@index')->name('post.show');
 Route::get('/p/create', 'BlogPostsController@create');
 Route::post('/p', 'BlogPostsController@store');
+Route::post('/c', 'BlogPostDetailController@store');

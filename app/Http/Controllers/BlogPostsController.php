@@ -14,7 +14,7 @@ class BlogPostsController extends Controller
 
     public function index(){
 
-        $posts = BlogPosts::orderBy('created_at','desc')->paginate(10);
+        $posts = BlogPosts::orderBy('created_at','desc')->paginate(5);
 
         foreach($posts as $post){
             $post->numberOfComments = Comments::where('blog_post_id', '=', $post->id)->get()->count();

@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\BlogPost;
 use App\User;
 use App\Comments;
+use Illuminate\Support\Facades\Redirect;
 
 class BlogPostDetailController extends Controller
 {
@@ -19,5 +20,19 @@ class BlogPostDetailController extends Controller
             'user' => $user,
             'comments' => $comments
         ]);
+    }
+    public function store(){
+        
+        $data =request()->validate([
+            'body' => 'required'
+        ]);
+
+
+        auth()->user()->comments()->create([
+            'body' => $data['body'],
+            'blog_post_id' => '1'
+        ]);
+
+        return Redirect::back();
     }
 }
