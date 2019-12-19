@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\BlogPosts;
+use App\BlogPost;
 use App\Comments;
 
 class BlogPostsController extends Controller
@@ -50,5 +52,21 @@ class BlogPostsController extends Controller
         ]);
 
         return redirect('/');
+    }
+
+    public function edit($id){
+        $post = BlogPost::find($id);
+        return view('posts.edit')->with('post', $post);
+    }
+
+    public function update($id){
+
+        $post = BlogPost::find($id);
+        $post->title = request()->input('title');
+        $post->body = request()->input('body');
+        $post->exerpt = request()->input('exerpt');
+        $post->save();
+
+        return redirect('/')->with('success','Post Edited');
     }
 }

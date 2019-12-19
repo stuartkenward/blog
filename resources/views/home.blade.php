@@ -44,16 +44,30 @@
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; 
     transition: color .5s,fill .5s,box-shadow .5s;
     padding-top: 16px">
-    <a href="/post/{{$post->id}}" style="display: block; color: #000000; text-decoration: none">
-        <div>
-            <h1>{{$post->title}}</h1>
-            <div style="text-align: right">Posted by {{$post->posted_by}}</div>
+        <a href="/post/{{$post->id}}" style="display: block; color: #000000; text-decoration: none">
             <div>
-            <h4>{{$post->exerpt}}</h3>
+                <div class="d-flex justify-content-between">
+                <h1>{{$post->title}}</h1>
+                <div style="text-align: right">Posted by {{$post->posted_by}}</div>
+                
+                </div>
+                
+                <div>
+                <h4>{{$post->exerpt}}</h3>
+                </div>
             </div>
-        <h5 style="text-align: right">{{$post->number_of_comments}} comments</h5>
+        </a>
+        <div class="d-flex justify-content-between">
+            <h5 style="text-align: left">{{$post->number_of_comments}} comments</h5>
+            <div>
+                <a href="/p/edit/{{$post->id}}" class="btn btn-default">
+                        Edit post
+                </a>
+                <a href="/p/delete/{{$post->id}}" class="btn btn-default">
+                        Delete post
+                </a>
+            </div>
         </div>
-    </a>
     </div>
 @endforeach
 <div class="container">
