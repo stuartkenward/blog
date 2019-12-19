@@ -3,8 +3,9 @@
 @section('content')
 
 <div style="padding-top: 16px"></div>
-<div class="container" style="text-align: center;">
+<div class="container" style=" style=box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; ">
     <div class="col-12" style="
+        text-align: center;
         background: #FFFFFF; 
         canvas: #DAE0E6; 
         display: block; 
@@ -27,26 +28,6 @@
 
             <div>Posted by {{$user->name}}</div>
             
-
-            <div class="d-flex pt-2" style="display: flex;
-            align-items: center;
-            justify-content: center;">
-                @can('update', \App\BlogPost::find($post->id))
-                <form action="/p/edit/{{$post->id}}" enctype="multipart/form-data" method="get">
-                    @csrf
-                            <button class="btn btn-secondary">Edit post</button>
-                </form>
-                @endcan
-                @can('delete', \App\BlogPost::find($post->id))
-                <form action="/p/delete/{{$post->id}}" enctype="multipart/form-data" method="post">
-                    @csrf
-                            <button class="btn btn-danger">Delete post</button>
-    
-                </form>
-                @endcan
-            </div>
-
-           
             <img src="/storage/{{$post->image}}" alt="" style="width:auto; max-height: 540px; align: center;">
             <div style="font-family: proxima-nova;
             font-weight: 400;
@@ -57,11 +38,27 @@
             text-transform: none;
             color: #757575;">{{$post->body}}</div>
             
+            <div class="d-flex pt-2" style="align-items: flex-end; float: right;">
+                @can('update', \App\BlogPost::find($post->id))
+                <form action="/p/edit/{{$post->id}}" enctype="multipart/form-data" method="get">
+                    @csrf
+                            <button class="btn btn-secondary" >Edit post</button>
+                </form>
+                @endcan
+                @can('delete', \App\BlogPost::find($post->id))
+                <form action="/p/delete/{{$post->id}}" enctype="multipart/form-data" method="post">
+                    @csrf
+                            <button class="btn btn-danger">Delete post</button>
+    
+                </form>
+                @endcan
+            </div>
         </div>
         
     </div>
 
-    <div class="container pt-2">
+    <div class="container pt-2" style="box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; 
+    ">
         <h2>Comments</h2>
         @foreach ($comments as $comment)
         <div class="pt-2">
@@ -69,27 +66,42 @@
             background: #FFFFFF; 
             canvas: #DAE0E6; 
             display: block; 
-            border-radius: 4px;">
+            border-radius: 4px;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;" >
                 <div>
-                    <h4>{{$comment->body}}</h4>
+                    <h4 style="font-family: proxima-nova;
+                    font-weight: 400;
+                    font-style: normal;
+                    font-size: 15px;
+                    letter-spacing: .02em;
+                    line-height: 2em;
+                    text-transform: none;
+                    color: #757575;">{{$comment->body}}</h4>
                 </div>
-                <div style="text-align:right">
-                    Posted by {{$comment->posted_by}}
-                </div>
-                <div class="d-flex">
-                    @can('update', \App\Comment::find($comment->id))
-                    <form action="/c/edit/{{$comment->id}}" enctype="multipart/form-data" method="get">
-                        @csrf
-                                <button class="btn btn-secondary">Edit comment</button>
-                    </form>
-                    @endcan
-                    @can('delete', \App\Comment::find($comment->id))
-                    <form action="/c/delete/{{$comment->id}}" enctype="multipart/form-data" method="post">
-                        @csrf
-                                <button class="btn btn-danger">Delete comment</button>
-    
-                    </form>
-                    @endcan
+                <div class="d-flex justify-content-between">
+                    <div style="font-family: proxima-nova;
+                    font-weight: 400;
+                    font-style: normal;
+                    font-size: 13px;">
+                        Posted by {{$comment->posted_by}}
+                    </div>
+                    <div style="float: right;">
+                        <div class="d-flex pt-2" style="align-items: flex-end; float: right;">
+                        @can('update', \App\Comment::find($comment->id))
+                        <form action="/c/edit/{{$comment->id}}" enctype="multipart/form-data" method="get">
+                            @csrf
+                                    <button class="btn btn-secondary">Edit comment</button>
+                        </form>
+                        @endcan
+                        @can('delete', \App\Comment::find($comment->id))
+                        <form action="/c/delete/{{$comment->id}}" enctype="multipart/form-data" method="post">
+                            @csrf
+                                    <button class="btn btn-danger">Delete comment</button>
+        
+                        </form>
+                        </div>
+                        @endcan
+                    </div>
                 </div>
             </div>
         </div>

@@ -34,8 +34,7 @@
         
 
         <a href="/post/{{$post->id}}" style="display: block; color: #000000; text-decoration: none">
-            <div>
-                <div class="d-flex justify-content-between">
+            <div style="text-align: center;">
                     <h1 style="font-family: futura-pt;
                     font-weight: 400;
                     font-style: normal;
@@ -46,19 +45,12 @@
                     color: #3b4b7f;
                     -webkit-box-ordinal-group: 2;">{{$post->title}}</h1>
                     <div>
-                        <div style="text-align:right">
                             @foreach ($categories as $category)
                             <div>{{$category->name}}</div>
                             @endforeach
-                        </div>
-                        <div style="text-align: right">Posted by {{$post->posted_by}}</div>
+                        <div>Posted by {{$post->posted_by}}</div>
                     </div>
-                    
-                
-                </div>
-                <div class="d-flex justify-content-between">
                     <img src="/storage/{{$post->image}}" alt="" style="width:auto;max-height: 540px;">
-                </div>
                 <div>
                 <h4 style="font-family: proxima-nova;
                 font-weight: 400;
