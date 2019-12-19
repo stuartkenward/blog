@@ -40,12 +40,14 @@ class BlogPostDetailController extends Controller
 
     public function edit($id){
         $comment = Comment::find($id);
+        $this->authorize('update', $comment);
         return view('comments.edit')->with('comment', $comment);
     }
 
     public function update($id){
 
         $comment = Comment::find($id);
+        $this->authorize('update', $comment);
         $comment->body = request()->input('body');
         $comment->save();
         return redirect('/post/'.$comment->blog_post_id);
@@ -54,6 +56,7 @@ class BlogPostDetailController extends Controller
 
     public function delete($id){
         $comment = Comment::find($id);
+        $this->authorize('delete', $comment);
         $comment->delete();
         return Redirect::back()->with('success','Post Deleted');
     }

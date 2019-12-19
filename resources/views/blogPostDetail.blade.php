@@ -51,15 +51,19 @@
                     Posted by {{$comment->posted_by}}
                 </div>
                 <div class="d-flex">
+                    @can('update', \App\Comment::find($comment->id))
                     <form action="/c/edit/{{$comment->id}}" enctype="multipart/form-data" method="get">
                         @csrf
                                 <button class="btn btn-secondary">Edit comment</button>
                     </form>
+                    @endcan
+                    @can('delete', \App\Comment::find($comment->id))
                     <form action="/c/delete/{{$comment->id}}" enctype="multipart/form-data" method="post">
                         @csrf
                                 <button class="btn btn-danger">Delete comment</button>
     
                     </form>
+                    @endcan
                 </div>
             </div>
         </div>
