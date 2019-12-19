@@ -32,7 +32,6 @@
             $categories = $post->categories;
         ?>
         
-
         <a href="/post/{{$post->id}}" style="display: block; color: #000000; text-decoration: none">
             <div style="text-align: center;">
                     <h1 style="font-family: futura-pt;
@@ -46,7 +45,7 @@
                     -webkit-box-ordinal-group: 2;">{{$post->title}}</h1>
                     <div>
                             @foreach ($categories as $category)
-                            <div>{{$category->name}}</div>
+                            <div class="btn btn-" style="background-color:#757575">{{$category->name}}</div>
                             @endforeach
                         <div>Posted by {{$post->posted_by}}</div>
                     </div>
@@ -63,8 +62,8 @@
                 </div>
             </div>
         </a>
+        <h5 style="text-align: right">{{$post->number_of_comments}} comments</h5>
         <div class="d-flex justify-content-between">
-            <h5 style="text-align: left">{{$post->number_of_comments}} comments</h5>
             <div class="d-flex">
                 @can('update', \App\BlogPost::find($post->id))
                     <form action="/p/edit/{{$post->id}}" enctype="multipart/form-data" method="get">

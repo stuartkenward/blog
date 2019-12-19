@@ -23,7 +23,7 @@
             -webkit-box-ordinal-group: 2;">{{$post->title}}</h1> 
             
             @foreach ($categories as $category)
-            <div class="btn btn-" style="margin: 5px">{{$category->name}}</div>
+            <div class="btn btn-" style="margin: 5px; background-color:#757575">{{$category->name}}</div>
             @endforeach
 
             <div>Posted by {{$user->name}}</div>
@@ -58,7 +58,7 @@
     </div>
 
     <div class="container pt-2" style="box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; 
-    ">
+    background-color:#757575; border-radius: 4px;">
         <h2>Comments</h2>
         @foreach ($comments as $comment)
         <div class="pt-2">
@@ -108,6 +108,7 @@
         @endforeach
     </div>
     <div class="pt-2">
+        @if ($loggedIn)     
         <form action="/c/{{$post->id}}" enctype="multipart/form-data" method="post">
             @csrf
             <div class="row">
@@ -129,6 +130,7 @@
                 </div>
             </div>
         </form>
+        @endif
     </div>
 </div>
 
