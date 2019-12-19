@@ -13,23 +13,18 @@
                 <h1>Add New Post</h1>
             </div>
             <div class="row">
-                <div class="col-8 offset-2">
                 <label for="title" class="col-md-4 col-form-label">Post title</label>
-                <input type="text", class="form-control" id="title" name="title"/>
+                <input type="text", class="form-control @error('title') is-invalid @enderror" id="title" name="title" required autocomplete="title" autofocus/>
                 @error('title')
                                     <strong>{{ $message }}</strong>
                             @enderror
-                        </div>
             </div>
                 <div class="form-group row">
                     <label for="body" class="col-md-4 col-form-label">Body</label>
-
-                        <textarea id="body" class="form-control" name="body" rows="10" cols="40"></textarea>
+                        <textarea id="body" class="form-control @error('body') is-invalid @enderror" name="body" rows="10" cols="40" required autocomplete="body" autofocus></textarea>
             
                         @error('body')
-                            <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
-                            </span>
                         @enderror
                 </div>
             </div>
@@ -40,12 +35,10 @@
                 <div class="form-group row">
                     <label for="exerpt" class="col-md-4 col-form-label">Exerpt</label>
 
-                        <textarea id="exerpt" class="form-control" name="exerpt" rows="5" cols="40"></textarea>
+                        <textarea id="exerpt" class="form-control @error('exerpt') is-invalid @enderror" name="exerpt" rows="5" cols="40" required autocomplete="title" autofocus></textarea>
             
                         @error('exerpt')
-                            <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
-                            </span>
                         @enderror
                 </div>
             </div>

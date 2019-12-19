@@ -32,7 +32,6 @@
             canvas: #DAE0E6; 
             display: block; 
             border-radius: 4px; 
-            cursor: pointer; 
             box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; 
             transition: color .5s,fill .5s,box-shadow .5s;">
                 <div>
@@ -51,7 +50,7 @@
             <div class="row">
                 <div class="col-8 offset-2">
                     <div class="form-group row">
-                            <textarea id="body" class="form-control" name="body" rows="5" cols="40"></textarea>
+                            <textarea id="body" class="form-control" name="body" rows="5" cols="40" required autocomplete="body" autofocus></textarea>
                             @error('body')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
