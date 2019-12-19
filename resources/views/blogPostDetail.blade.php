@@ -13,6 +13,9 @@
         transition: color .5s,fill .5s,box-shadow .5s;">
         <div>
             <h1>{{$post->title}}</h1> 
+            @foreach ($categories as $category)
+                <div>{{$category->name}}</div>
+            @endforeach
             <h4>{{$post->body}}</h3>
             <div style="text-align:right">Posted by {{$user->name}}</div>
         </div>

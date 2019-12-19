@@ -15,11 +15,13 @@ class BlogPostDetailController extends Controller
         $post = BlogPost::findOrFail($post);
         $user = User::findOrFail($post->user_id);
         $comments = Comments::where('blog_post_id', '=', $post->id)->get();
+        $categories = $post->categories;
 
         return view("blogPostDetail", [
             'post' => $post,
             'user' => $user,
-            'comments' => $comments
+            'comments' => $comments,
+            'categories' => $categories
         ]);
     }
     public function store($post){
