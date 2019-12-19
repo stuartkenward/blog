@@ -30,7 +30,8 @@ class BlogPostDetailController extends Controller
 
         auth()->user()->comments()->create([
             'body' => $data['body'],
-            'blog_post_id' => $post
+            'blog_post_id' => $post,
+            'posted_by' => auth()->user()->name
         ]);
 
         return Redirect::back();

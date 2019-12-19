@@ -36,10 +36,10 @@
             box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; 
             transition: color .5s,fill .5s,box-shadow .5s;">
                 <div>
-                    {{$comment->body}}
+                    <h4>{{$comment->body}}</h4>
                 </div>
-                <div>
-                    Posted by {{$user->name}} at {{$comment->updated_at}}
+                <div style="text-align:right">
+                    Posted by {{$comment->posted_by}} at {{$comment->updated_at}}
                 </div>
             </div>
         </div>
