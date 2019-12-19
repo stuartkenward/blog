@@ -16,6 +16,9 @@
             @foreach ($categories as $category)
                 <div>{{$category->name}}</div>
             @endforeach
+            <div class="d-flex justify-content-between">
+                <img src="/storage/{{$post->image}}" alt="" style="width:auto;max-height: 540px;">
+            </div>
             <h4>{{$post->body}}</h3>
             <div style="text-align:right">Posted by {{$user->name}}</div>
         </div>

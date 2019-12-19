@@ -45,7 +45,7 @@
         <div class="row">
             <div class="col-8 offset-2">
             <label for="image" class="col-md-4 col-form-label">Post Image</label>
-            <input type="file", class="form-control-file" id="image" name="image" value="{{$post->image}}"/>
+            <input type="file" class="form-control-file" id="image" name="image" value="{{$post->image}} "/>
             @error('image')
                                 <strong>{{ $message }}</strong>
                         @enderror

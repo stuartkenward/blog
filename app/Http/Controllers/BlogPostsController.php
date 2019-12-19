@@ -42,7 +42,7 @@ class BlogPostsController extends Controller
             $data =request()->validate([
                 'title' => 'required',
                 'body' => 'required',
-                'image' => '',
+                'image' => ['required','image'],
                 'exerpt' => 'required'
             ]);
 
@@ -69,10 +69,13 @@ class BlogPostsController extends Controller
 
     public function update($id){
         $post = BlogPost::find($id);
+        $imagePath = request('image')->store('uploads', 'public');
+
         $this->authorize('update', $post);
         $post->title = request()->input('title');
         $post->body = request()->input('body');
         $post->exerpt = request()->input('exerpt');
+        $post->image = $imagePath;
         $post->save();
 
         return redirect('/')->with('success','Post Edited');
