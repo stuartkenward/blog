@@ -17,15 +17,19 @@
             <div style="text-align:right">Posted by {{$user->name}}</div>
         </div>
         <div class="d-flex">
+            @can('update', \App\BlogPost::find($post->id))
             <form action="/p/edit/{{$post->id}}" enctype="multipart/form-data" method="get">
                 @csrf
                         <button class="btn btn-secondary">Edit post</button>
             </form>
+            @endcan
+            @can('delete', \App\BlogPost::find($post->id))
             <form action="/p/delete/{{$post->id}}" enctype="multipart/form-data" method="post">
                 @csrf
                         <button class="btn btn-danger">Delete post</button>
 
             </form>
+            @endcan
         </div>
     </div>
 

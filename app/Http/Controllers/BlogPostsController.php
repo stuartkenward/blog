@@ -17,13 +17,15 @@ class BlogPostsController extends Controller
     public function index(){
 
         $posts = BlogPosts::orderBy('created_at','desc')->paginate(5);
+        $user = auth()->user();
 
         foreach($posts as $post){
             $post->number_of_comments = Comments::where('blog_post_id', '=', $post->id)->get()->count();
         }
 
         return view("home", [
-            'posts' => $posts
+            'posts' => $posts,
+            'user' => $user
         ]);
     }
 
@@ -56,12 +58,13 @@ class BlogPostsController extends Controller
 
     public function edit($id){
         $post = BlogPost::find($id);
+        $this->authorize('update', $post);
         return view('posts.edit')->with('post', $post);
     }
 
     public function update($id){
-
         $post = BlogPost::find($id);
+        $this->authorize('update', $post);
         $post->title = request()->input('title');
         $post->body = request()->input('body');
         $post->exerpt = request()->input('exerpt');
@@ -72,6 +75,7 @@ class BlogPostsController extends Controller
 
     public function delete($id){
         $post = BlogPost::find($id);
+        $this->authorize('delete', $post);
         $post->delete();
         return redirect('/')->with('success','Post Deleted');
     }

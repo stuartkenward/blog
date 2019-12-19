@@ -40,15 +40,19 @@
         <div class="d-flex justify-content-between">
             <h5 style="text-align: left">{{$post->number_of_comments}} comments</h5>
             <div class="d-flex">
-                <form action="/p/edit/{{$post->id}}" enctype="multipart/form-data" method="get">
-                    @csrf
-                            <button class="btn btn-secondary">Edit post</button>
-                </form>
-                <form action="/p/delete/{{$post->id}}" enctype="multipart/form-data" method="post">
-                    @csrf
-                            <button class="btn btn-danger">Delete post</button>
+                @can('update', \App\BlogPost::find($post->id))
+                    <form action="/p/edit/{{$post->id}}" enctype="multipart/form-data" method="get">
+                        @csrf
+                                <button class="btn btn-secondary">Edit post</button>
+                    </form>
+                @endcan
+                @can('delete', \App\BlogPost::find($post->id))
+                    <form action="/p/delete/{{$post->id}}" enctype="multipart/form-data" method="post">
+                        @csrf
+                                <button class="btn btn-danger">Delete post</button>
 
-                </form>
+                    </form>
+                @endcan
             </div>
         </div>
     </div>
