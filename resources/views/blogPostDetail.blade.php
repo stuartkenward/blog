@@ -39,7 +39,7 @@
                     <h4>{{$comment->body}}</h4>
                 </div>
                 <div style="text-align:right">
-                    Posted by {{$comment->posted_by}} at {{$comment->updated_at}}
+                    Posted by {{$comment->posted_by}}
                 </div>
             </div>
         </div>
