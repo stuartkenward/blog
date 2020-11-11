@@ -16,7 +16,7 @@ git clone git@github.com:stukenward/blog.git
 
 Switch to the repo folder
 ```sh
-cd laravel-realworld-example-app
+cd blog
 ```
 Install all the dependencies using composer
 ```sh
