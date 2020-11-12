@@ -6,7 +6,7 @@ The project goals were to:
  - Create, edit, and delete comments on blog posts.
  - Have multiple levels of user authorization.
 
-#Run Project
+# Run Project
 
 Clone the repository
 
