@@ -11,7 +11,7 @@ The project goals were to:
 Clone the repository
 
 ```sh
-git clone git@github.com:stukenward/blog.git
+git clone git@github.com:stuartkenward/blog.git
 ```
 
 Switch to the repo folder
